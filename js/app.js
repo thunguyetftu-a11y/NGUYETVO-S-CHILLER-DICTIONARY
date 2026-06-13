@@ -25,12 +25,22 @@ class ChillerLearningApp {
             if (e.key === 'Enter') this.startLearning();
         });
 
+        // Rules Screen
+        document.getElementById('rulesBackBtn').addEventListener('click', () => this.backToWelcome());
+        document.getElementById('rulesOkBtn').addEventListener('click', () => this.goToGroupSelection());
+        document.getElementById('rulesInfoBtn').addEventListener('click', () => this.showRules());
+
         // Group Selection
         document.getElementById('beginQuizBtn').addEventListener('click', () => this.startQuiz());
+        document.getElementById('homeBtn').addEventListener('click', () => this.goHome());
+
+        // Quiz Screen
+        document.getElementById('exitBtn').addEventListener('click', () => this.exitQuiz());
 
         // Results Screen
         document.getElementById('playAgainBtn').addEventListener('click', () => this.playAgain());
         document.getElementById('changeGroupsBtn').addEventListener('click', () => this.changeGroups());
+        document.getElementById('homeResultsBtn').addEventListener('click', () => this.goHome());
     }
 
     loadQuestions() {
@@ -81,7 +91,20 @@ class ChillerLearningApp {
             return;
         }
         this.playerName = playerName;
-        this.switchScreen('welcomeScreen', 'groupSelectionScreen');
+        this.switchScreen('welcomeScreen', 'rulesScreen');
+    }
+
+    showRules() {
+        this.switchScreen('groupSelectionScreen', 'rulesScreen');
+    }
+
+    backToWelcome() {
+        this.switchScreen('rulesScreen', 'welcomeScreen');
+        document.getElementById('playerName').value = '';
+    }
+
+    goToGroupSelection() {
+        this.switchScreen('rulesScreen', 'groupSelectionScreen');
     }
 
     startQuiz() {
@@ -105,6 +128,8 @@ class ChillerLearningApp {
     }
 
     playAgain() {
+        // Shuffle questions again for play again
+        this.allQuestions = this.shuffleArray(this.allQuestions);
         this.scores = { standard: 0, bonus: 0 };
         this.answers = [];
         this.currentQuestionIndex = 0;
@@ -119,6 +144,23 @@ class ChillerLearningApp {
         document.querySelectorAll('.group-card').forEach(card => card.classList.remove('selected'));
         document.getElementById('beginQuizBtn').disabled = true;
         this.switchScreen('resultsScreen', 'groupSelectionScreen');
+    }
+
+    goHome() {
+        this.selectedGroups = [];
+        this.scores = { standard: 0, bonus: 0 };
+        this.answers = [];
+        this.playerName = '';
+        document.querySelectorAll('.group-card').forEach(card => card.classList.remove('selected'));
+        document.getElementById('beginQuizBtn').disabled = true;
+        document.getElementById('playerName').value = '';
+        this.switchScreen('groupSelectionScreen', 'welcomeScreen');
+    }
+
+    exitQuiz() {
+        if (confirm('Are you sure you want to exit? Your progress will be lost.')) {
+            this.goHome();
+        }
     }
 
     switchScreen(fromId, toId) {

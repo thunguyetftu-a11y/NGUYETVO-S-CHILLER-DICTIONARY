@@ -21,15 +21,96 @@
             </div>
         </div>
 
+        <!-- Screen 1.5: Learning Rules -->
+        <div id="rulesScreen" class="screen">
+            <div class="rules-content">
+                <div class="rules-header">
+                    <h2>📚 Learning Rules & Scoring</h2>
+                    <button id="rulesBackBtn" class="btn-icon btn-close">✕</button>
+                </div>
+                <div class="rules-body">
+                    <div class="rules-section">
+                        <h3>⏱️ How It Works</h3>
+                        <ul>
+                            <li>Each question has <strong>10 seconds</strong> to answer</li>
+                            <li>Questions are <strong>randomly shuffled</strong> each time you play</li>
+                            <li>Answer before time runs out to score points</li>
+                            <li>After 10 seconds, automatically moves to next question</li>
+                            <li>No turning back to previous questions</li>
+                        </ul>
+                    </div>
+
+                    <div class="rules-section">
+                        <h3>⭐ Scoring System</h3>
+                        <div class="score-table">
+                            <div class="score-row">
+                                <span class="time-range"><strong>Answered in 1 sec:</strong></span>
+                                <span class="points">10 + 5 = <strong>15 points</strong></span>
+                            </div>
+                            <div class="score-row">
+                                <span class="time-range"><strong>Answered in 2 sec:</strong></span>
+                                <span class="points">10 + 4 = <strong>14 points</strong></span>
+                            </div>
+                            <div class="score-row">
+                                <span class="time-range"><strong>Answered in 3 sec:</strong></span>
+                                <span class="points">10 + 3 = <strong>13 points</strong></span>
+                            </div>
+                            <div class="score-row">
+                                <span class="time-range"><strong>Answered in 4 sec:</strong></span>
+                                <span class="points">10 + 2 = <strong>12 points</strong></span>
+                            </div>
+                            <div class="score-row">
+                                <span class="time-range"><strong>Answered in 5 sec:</strong></span>
+                                <span class="points">10 + 1 = <strong>11 points</strong></span>
+                            </div>
+                            <div class="score-row">
+                                <span class="time-range"><strong>Answered in 6-10 sec:</strong></span>
+                                <span class="points">10 + 0 = <strong>10 points</strong></span>
+                            </div>
+                            <div class="score-row wrong">
+                                <span class="time-range"><strong>Wrong answer:</strong></span>
+                                <span class="points"><strong>0 points</strong></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rules-section">
+                        <h3>🎯 Points Breakdown</h3>
+                        <ul>
+                            <li><strong>Standard Points (Blue):</strong> 10 points for each correct answer</li>
+                            <li><strong>Bonus Points (Orange):</strong> Extra points for answering quickly (within 5 seconds)</li>
+                            <li><strong>Maximum per question:</strong> 15 points (10 standard + 5 bonus)</li>
+                        </ul>
+                    </div>
+
+                    <div class="rules-section">
+                        <h3>🏆 Leaderboard</h3>
+                        <ul>
+                            <li>Your total score appears in the leaderboard after each quiz</li>
+                            <li>Top 10 scores are saved locally on your device</li>
+                            <li>Compete with friends by sharing the program link</li>
+                        </ul>
+                    </div>
+                </div>
+                <button id="rulesOkBtn" class="btn btn-primary" style="margin-top: 20px;">Got it!</button>
+            </div>
+        </div>
+
         <!-- Screen 2: Group Selection -->
         <div id="groupSelectionScreen" class="screen">
-            <div class="selection-content">
+            <div class="selection-header">
                 <h2>Select Chiller Groups to Study</h2>
+                <button id="rulesInfoBtn" class="btn-icon">❓</button>
+            </div>
+            <div class="selection-content">
                 <p class="subtitle">Choose one or more groups</p>
                 <div id="groupsList" class="groups-container">
                     <!-- Groups will be dynamically populated -->
                 </div>
-                <button id="beginQuizBtn" class="btn btn-primary" disabled>Begin Quiz</button>
+                <div class="button-group-selection">
+                    <button id="beginQuizBtn" class="btn btn-primary" disabled>Begin Quiz</button>
+                    <button id="homeBtn" class="btn btn-danger">🏠 Home</button>
+                </div>
             </div>
         </div>
 
@@ -46,13 +127,20 @@
 
                 <!-- Center: Question and Options -->
                 <div class="quiz-content">
+                    <div class="quiz-header">
+                        <div></div>
+                        <div class="question-info-top">
+                            <span id="questionNumber" class="question-num">Question 1/10</span>
+                        </div>
+                        <button id="exitBtn" class="btn-icon btn-exit">✕ Exit</button>
+                    </div>
+
                     <div class="progress-bar">
                         <div id="progressFill" class="progress-fill"></div>
                     </div>
                     
                     <div class="question-container">
                         <div class="question-info">
-                            <span id="questionNumber" class="question-num">Question 1/10</span>
                             <span id="timer" class="timer">10s</span>
                         </div>
                         <h3 id="questionText" class="question-text"></h3>
@@ -102,6 +190,7 @@
                 <div class="button-group">
                     <button id="playAgainBtn" class="btn btn-primary">Play Again</button>
                     <button id="changeGroupsBtn" class="btn btn-secondary">Change Groups</button>
+                    <button id="homeResultsBtn" class="btn btn-danger">🏠 Home</button>
                 </div>
             </div>
         </div>

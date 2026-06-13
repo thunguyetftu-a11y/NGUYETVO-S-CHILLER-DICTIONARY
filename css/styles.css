@@ -52,6 +52,134 @@ body {
     }
 }
 
+/* Icon Buttons */
+.btn-icon {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: var(--transition);
+    color: var(--primary-color);
+}
+
+.btn-icon:hover {
+    background-color: var(--light-bg);
+    transform: scale(1.1);
+}
+
+.btn-close {
+    color: #999;
+    font-size: 28px;
+}
+
+.btn-close:hover {
+    color: var(--error-color);
+}
+
+.btn-exit {
+    color: var(--error-color);
+}
+
+.btn-exit:hover {
+    background-color: #ffebee;
+}
+
+/* Rules Screen */
+.rules-content {
+    background: white;
+    border-radius: 12px;
+    padding: 0;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.rules-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 40px 20px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.rules-header h2 {
+    color: var(--primary-color);
+    font-size: 28px;
+    margin: 0;
+}
+
+.rules-body {
+    overflow-y: auto;
+    padding: 30px 40px;
+    flex: 1;
+}
+
+.rules-section {
+    margin-bottom: 30px;
+}
+
+.rules-section h3 {
+    color: var(--dark-text);
+    font-size: 18px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.rules-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.rules-section li {
+    padding: 8px 0;
+    color: #555;
+    line-height: 1.6;
+}
+
+.rules-section li:before {
+    content: "✓ ";
+    color: var(--success-color);
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.score-table {
+    background-color: var(--light-bg);
+    border-radius: 8px;
+    padding: 15px;
+}
+
+.score-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    margin-bottom: 8px;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.score-row.wrong {
+    border-left-color: var(--error-color);
+}
+
+.score-row:last-child {
+    margin-bottom: 0;
+}
+
+.time-range {
+    color: #555;
+}
+
+.points {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
 /* Welcome Screen */
 .welcome-content {
     background: white;
@@ -143,6 +271,16 @@ body {
     transform: translateY(-2px);
 }
 
+.btn-danger {
+    background-color: var(--error-color);
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #d32f2f;
+    transform: translateY(-2px);
+}
+
 .btn-option {
     width: 100%;
     padding: 18px;
@@ -177,17 +315,26 @@ body {
 }
 
 /* Group Selection Screen */
-.selection-content {
+.selection-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background: white;
-    border-radius: 12px;
-    padding: 40px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    border-radius: 12px 12px 0 0;
+    padding: 30px 40px 20px;
 }
 
-.selection-content h2 {
+.selection-header h2 {
     color: var(--primary-color);
-    margin-bottom: 10px;
     font-size: 28px;
+    margin: 0;
+}
+
+.selection-content {
+    background: white;
+    border-radius: 0 0 12px 12px;
+    padding: 20px 40px 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
 }
 
 .subtitle {
@@ -233,6 +380,16 @@ body {
 .group-card p {
     color: #666;
     font-size: 12px;
+}
+
+.button-group-selection {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.button-group-selection .btn {
+    min-width: 150px;
 }
 
 /* Quiz Screen */
@@ -286,6 +443,18 @@ body {
     flex-direction: column;
 }
 
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.question-info-top {
+    flex: 1;
+    text-align: center;
+}
+
 .progress-bar {
     height: 4px;
     background-color: var(--light-bg);
@@ -307,7 +476,7 @@ body {
 
 .question-info {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     margin-bottom: 15px;
     font-size: 12px;
     text-transform: uppercase;
@@ -453,6 +622,7 @@ body {
     display: flex;
     gap: 15px;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .button-group .btn {
@@ -498,6 +668,14 @@ body {
     }
 
     .button-group .btn {
+        width: 100%;
+    }
+
+    .button-group-selection {
+        flex-direction: column;
+    }
+
+    .button-group-selection .btn {
         width: 100%;
     }
 }
