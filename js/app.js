@@ -10,6 +10,9 @@ class ChillerLearningApp {
             bonus: 0
         };
         this.answers = [];
+        this.quizStartTime = null;
+        this.quizEndTime = null;
+        this.correctCount = 0;
         this.init();
     }
 
@@ -44,8 +47,8 @@ class ChillerLearningApp {
     }
 
     loadQuestions() {
-        // Load questions from JSON
-        fetch('data/questions.json')
+        // Load questions from JSON with cache busting
+        fetch('data/questions.json?v=' + new Date().getTime())
             .then(response => response.json())
             .then(data => {
                 this.questionsData = data;
@@ -122,6 +125,9 @@ class ChillerLearningApp {
         this.currentQuestionIndex = 0;
         this.scores = { standard: 0, bonus: 0 };
         this.answers = [];
+        this.correctCount = 0;
+        this.quizStartTime = Date.now();
+        this.quizEndTime = null;
 
         this.switchScreen('groupSelectionScreen', 'quizScreen');
         this.displayQuestion();
@@ -132,7 +138,10 @@ class ChillerLearningApp {
         this.allQuestions = this.shuffleArray(this.allQuestions);
         this.scores = { standard: 0, bonus: 0 };
         this.answers = [];
+        this.correctCount = 0;
         this.currentQuestionIndex = 0;
+        this.quizStartTime = Date.now();
+        this.quizEndTime = null;
         this.switchScreen('resultsScreen', 'quizScreen');
         this.displayQuestion();
     }
@@ -141,6 +150,7 @@ class ChillerLearningApp {
         this.selectedGroups = [];
         this.scores = { standard: 0, bonus: 0 };
         this.answers = [];
+        this.correctCount = 0;
         document.querySelectorAll('.group-card').forEach(card => card.classList.remove('selected'));
         document.getElementById('beginQuizBtn').disabled = true;
         this.switchScreen('resultsScreen', 'groupSelectionScreen');
@@ -150,6 +160,7 @@ class ChillerLearningApp {
         this.selectedGroups = [];
         this.scores = { standard: 0, bonus: 0 };
         this.answers = [];
+        this.correctCount = 0;
         this.playerName = '';
         document.querySelectorAll('.group-card').forEach(card => card.classList.remove('selected'));
         document.getElementById('beginQuizBtn').disabled = true;
@@ -220,6 +231,7 @@ class ChillerLearningApp {
             const bonusPoints = calculateBonus(timeRemaining);
             this.scores.standard += 10;
             this.scores.bonus += bonusPoints;
+            this.correctCount++;
             this.answers.push({ correct: true, timeRemaining, bonusPoints });
         } else {
             this.answers.push({ correct: false });
@@ -250,16 +262,60 @@ class ChillerLearningApp {
 
     showResults() {
         stopTimer();
+        this.quizEndTime = Date.now();
         const totalScore = this.scores.standard + this.scores.bonus;
+        const totalTimeSeconds = Math.floor((this.quizEndTime - this.quizStartTime) / 1000);
+        const totalQuestions = this.allQuestions.length;
 
         document.getElementById('finalStandardScore').textContent = this.scores.standard;
         document.getElementById('finalBonusScore').textContent = this.scores.bonus;
         document.getElementById('finalTotalScore').textContent = totalScore;
 
+        // Add statistics display
+        const statsHTML = `
+            <div class="stats-section">
+                <h3>📊 Quiz Statistics</h3>
+                <div class="stats-item">
+                    <span class="stat-label">Correct Answers:</span>
+                    <span class="stat-value">${this.correctCount}/${totalQuestions}</span>
+                </div>
+                <div class="stats-item">
+                    <span class="stat-label">Accuracy:</span>
+                    <span class="stat-value">${Math.round((this.correctCount / totalQuestions) * 100)}%</span>
+                </div>
+                <div class="stats-item">
+                    <span class="stat-label">Total Time:</span>
+                    <span class="stat-value">${this.formatTime(totalTimeSeconds)}</span>
+                </div>
+                <div class="stats-item">
+                    <span class="stat-label">Average Time per Question:</span>
+                    <span class="stat-value">${(totalTimeSeconds / totalQuestions).toFixed(1)}s</span>
+                </div>
+            </div>
+        `;
+
+        let resultsContent = document.querySelector('.results-content');
+        let existingStats = resultsContent.querySelector('.stats-section');
+        if (existingStats) {
+            existingStats.remove();
+        }
+        
+        const leaderboard = document.getElementById('leaderboard');
+        leaderboard.insertAdjacentHTML('beforebegin', statsHTML);
+
         // Show leaderboard
         this.updateLeaderboard(this.playerName, totalScore);
 
         this.switchScreen('quizScreen', 'resultsScreen');
+    }
+
+    formatTime(seconds) {
+        const mins = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        if (mins === 0) {
+            return `${secs}s`;
+        }
+        return `${mins}m ${secs}s`;
     }
 
     updateLeaderboard(playerName, score) {
