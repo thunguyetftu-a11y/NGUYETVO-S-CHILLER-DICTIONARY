@@ -1,0 +1,252 @@
+{
+  "groups": [
+    {
+      "id": "basics",
+      "name": "Chiller Basics",
+      "description": "Fundamentals of chiller systems",
+      "questions": [
+        {
+          "id": 1,
+          "question": "What is the primary function of a chiller?",
+          "options": [
+            "To heat water",
+            "To cool water or air",
+            "To filter air",
+            "To increase humidity"
+          ],
+          "correct": 1
+        },
+        {
+          "id": 2,
+          "question": "Which component is responsible for compressing refrigerant?",
+          "options": [
+            "Evaporator",
+            "Condenser",
+            "Compressor",
+            "Expansion valve"
+          ],
+          "correct": 2
+        },
+        {
+          "id": 3,
+          "question": "What does COP stand for in chiller terminology?",
+          "options": [
+            "Cooling Operation Protocol",
+            "Coefficient of Performance",
+            "Compressor Operating Power",
+            "Cooling Output Percentage"
+          ],
+          "correct": 1
+        },
+        {
+          "id": 4,
+          "question": "What is the typical operating temperature range for chilled water?",
+          "options": [
+            "5-10°C",
+            "6-12°C",
+            "12-18°C",
+            "18-25°C"
+          ],
+          "correct": 2
+        },
+        {
+          "id": 5,
+          "question": "Which refrigerant is commonly used in modern Daikin chillers?",
+          "options": [
+            "R-12",
+            "R-22",
+            "R-410A",
+            "R-502"
+          ],
+          "correct": 2
+        }
+      ]
+    },
+    {
+      "id": "components",
+      "name": "Chiller Components",
+      "description": "Understanding chiller parts and systems",
+      "questions": [
+        {
+          "id": 6,
+          "question": "What is the function of the expansion valve?",
+          "options": [
+            "To increase refrigerant pressure",
+            "To reduce refrigerant pressure and temperature",
+            "To absorb heat from the air",
+            "To separate liquid from vapor"
+          ],
+          "correct": 1
+        },
+        {
+          "id": 7,
+          "question": "Where does heat rejection occur in a chiller?",
+          "options": [
+            "In the evaporator",
+            "In the compressor",
+            "In the condenser",
+            "In the expansion valve"
+          ],
+          "correct": 2
+        },
+        {
+          "id": 8,
+          "question": "What is the purpose of the condenser fan?",
+          "options": [
+            "To circulate chilled water",
+            "To cool the condenser coil",
+            "To increase compressor speed",
+            "To regulate pressure"
+          ],
+          "correct": 1
+        },
+        {
+          "id": 9,
+          "question": "Which component controls the refrigerant flow?",
+          "options": [
+            "Evaporator",
+            "Compressor",
+            "Expansion valve",
+            "Condenser"
+          ],
+          "correct": 2
+        },
+        {
+          "id": 10,
+          "question": "What does the accumulator prevent?",
+          "options": [
+            "Water accumulation",
+            "Liquid refrigerant from entering the compressor",
+            "Air from entering the system",
+            "Heat transfer"
+          ],
+          "correct": 1
+        }
+      ]
+    },
+    {
+      "id": "maintenance",
+      "name": "Maintenance & Troubleshooting",
+      "description": "Chiller maintenance and common issues",
+      "questions": [
+        {
+          "id": 11,
+          "question": "How often should chiller oil be changed?",
+          "options": [
+            "Every month",
+            "Every 6 months",
+            "Every year",
+            "Every 2-3 years"
+          ],
+          "correct": 2
+        },
+        {
+          "id": 12,
+          "question": "What indicates a refrigerant leak?",
+          "options": [
+            "Increased noise",
+            "Reduced cooling capacity and high pressure",
+            "Water in condenser",
+            "Fan not running"
+          ],
+          "correct": 1
+        },
+        {
+          "id": 13,
+          "question": "What should be checked during routine maintenance?",
+          "options": [
+            "Only the compressor",
+            "Refrigerant charge, oil level, and filter condition",
+            "Only the condenser",
+            "Only electrical connections"
+          ],
+          "correct": 1
+        },
+        {
+          "id": 14,
+          "question": "What does a high head pressure indicate?",
+          "options": [
+            "Normal operation",
+            "Condenser fouling or elevated ambient temperature",
+            "Low refrigerant charge",
+            "Evaporator freeze-up"
+          ],
+          "correct": 1
+        },
+        {
+          "id": 15,
+          "question": "How can condenser fouling be prevented?",
+          "options": [
+            "By increasing refrigerant charge",
+            "By regular cleaning and water treatment",
+            "By reducing compressor speed",
+            "By decreasing water flow"
+          ],
+          "correct": 1
+        }
+      ]
+    },
+    {
+      "id": "efficiency",
+      "name": "Energy Efficiency",
+      "description": "Chiller efficiency and optimization",
+      "questions": [
+        {
+          "id": 16,
+          "question": "What factor most affects chiller efficiency?",
+          "options": [
+            "Color of the chiller",
+            "Condenser and evaporator temperature difference",
+            "Size of the chiller room",
+            "Time of day"
+          ],
+          "correct": 1
+        },
+        {
+          "id": 17,
+          "question": "How can you improve SCOP (Seasonal Coefficient of Performance)?",
+          "options": [
+            "Increase compressor speed",
+            "Reduce chilled water temperature",
+            "Lower condenser temperature and increase evaporator temperature",
+            "Increase system pressure"
+          ],
+          "correct": 2
+        },
+        {
+          "id": 18,
+          "question": "What is the impact of proper refrigerant charge?",
+          "options": [
+            "No impact on efficiency",
+            "Directly affects cooling capacity and efficiency",
+            "Only affects noise level",
+            "Only affects color of refrigerant"
+          ],
+          "correct": 1
+        },
+        {
+          "id": 19,
+          "question": "Which feature improves chiller energy efficiency?",
+          "options": [
+            "Fixed speed compressor",
+            "Variable speed drive (VFD)",
+            "No capacity modulation",
+            "Constant water flow"
+          ],
+          "correct": 1
+        },
+        {
+          "id": 20,
+          "question": "What is the advantage of free cooling in chillers?",
+          "options": [
+            "No advantage",
+            "Reduces compressor runtime and saves energy",
+            "Increases cooling capacity",
+            "Eliminates maintenance"
+          ],
+          "correct": 1
+        }
+      ]
+    }
+  ]
+}
